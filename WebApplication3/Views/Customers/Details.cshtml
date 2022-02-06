@@ -1,0 +1,16 @@
+﻿
+@model WebApplication3.ViewModels.CustomerDetailsViewModel
+
+@{
+    ViewData["Title"] = "Customer details";
+}
+
+
+@if (Model?.Customer != null)
+{
+    <h1>@Model.Customer.Name</h1>
+    <ul style="font-size: 20px">
+        <li>Membership type: @Model.Customer.MembershipType.Name</li>
+        @if (Model.Customer.BirthDate != null){ <li>Birth Date: @Model.Customer.BirthDate.Value.ToShortDateString()</li> }
+    </ul>
+}

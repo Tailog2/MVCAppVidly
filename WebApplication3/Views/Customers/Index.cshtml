@@ -1,0 +1,37 @@
+﻿
+@model WebApplication3.ViewModels.CustomersViewModel
+
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<h1>Customers</h1>
+
+@if (Model is null)
+{
+    <text>Application can not reach the database</text>
+}
+else if (Model.Customers?.Any() is null)
+{
+    <text>We don't have any customers yet</text>
+}
+else
+{
+    <table class="table table-bordered table-hover" style="font-size: 20px">
+        <thead>
+            <tr>
+                <td>Customer</td>
+                <td>Discount Rate</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model.Customers)
+            {
+                <tr>
+                    <td>@Html.ActionLink(@customer.Name,	"Edit",	"Customers",	new { id=customer.Id })</td>
+                    <td>@customer.MembershipType.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,18 @@
+﻿
+@model WebApplication3.ViewModels.MovieDetailsViewModel
+
+@{
+    ViewData["Title"] = "Movie details";
+}
+
+
+@if (Model?.Movie != null)
+{
+    <h1>@Model.Movie.Name</h1>
+    <ul style="font-size: 20px">
+        <li>Genre: @Model.Movie.Genre.Name</li>
+        <li>Release Date: @Model.Movie.ReleaseDate.ToLongDateString()</li>
+        <li>Date Added: @Model.Movie.DateAdded.ToLongDateString()</li>
+        <li>Number in Stock: @Model.Movie.NumberInStock</li>
+    </ul>
+}
