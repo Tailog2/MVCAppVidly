@@ -61,9 +61,24 @@ namespace WebApplication3.Controllers
             return Ok($"{year} | {month}");
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult Save(Movie movie)
         {
+            movie.DateAdded = DateTime.Today;
+
+            if (ModelState.IsValid is false)
+            {
+                var genres = _dbContext.Genres.ToList();
+
+                var viewModel = new MovieFormViewModel(movie)
+                {
+                    Genres = genres
+                };
+
+                return View("MovieForm", viewModel);
+            }
+
             if (movie.Id == 0)
             {
                 _dbContext.Movies.Add(movie);
@@ -86,13 +101,14 @@ namespace WebApplication3.Controllers
         public IActionResult Edit(int id)
         {
             var movie = _dbContext.Movies.Include(m => m.Genre).SingleOrDefault(c => c.Id == id);
+            var genres = _dbContext.Genres.ToList();
+
             if (movie is null)
                 return NotFound();
 
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel(movie)
             {
-                Movie = movie,
-                Genres = _dbContext.Genres.ToList()
+                Genres = genres
             };
             return View("MovieForm", viewModel);
         }

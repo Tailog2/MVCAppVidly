@@ -41,9 +41,23 @@ namespace WebApplication3.Controllers
 
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult? Save(Customer customer)
         {
+            if (ModelState.IsValid is false)
+            {
+                var membershipTypes = _dbContext.MembershipTypes.ToList();
+
+                var viewModel = new CustomerFormViewModel(customer)
+                {
+                    MembershipTypes = membershipTypes
+                };
+
+                return View("CustomerForm", viewModel);
+            }
+
+
             if (customer.Id == 0)
             {
                 _dbContext.Customers.Add(customer);
@@ -65,9 +79,8 @@ namespace WebApplication3.Controllers
         public IActionResult? New()
         {
             var membershipTypes = _dbContext.MembershipTypes.ToList();
-            var viewModel = new CustomerFormViewModel
+            var viewModel = new CustomerFormViewModel()
             {
-                Customer = new Customer(),
                 MembershipTypes = membershipTypes
             };
 
@@ -78,13 +91,14 @@ namespace WebApplication3.Controllers
         public IActionResult Edit(int id)
         {
             var customer = _dbContext.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
+            var membershipTypes = _dbContext.MembershipTypes.ToList();
+
             if (customer is null)
                 return NotFound();
 
-            var viewModel = new CustomerFormViewModel
+            var viewModel = new CustomerFormViewModel(customer)
             {
-                Customer = customer,
-                MembershipTypes = _dbContext.MembershipTypes.ToList()
+                MembershipTypes = membershipTypes
             };
             return View("CustomerForm", viewModel);
         }

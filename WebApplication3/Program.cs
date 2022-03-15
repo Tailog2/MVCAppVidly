@@ -1,5 +1,8 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using WebApplication3;
 using WebApplication3.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,11 +11,18 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
 builder.Services.AddControllersWithViews();
+
+
 
 
 var app = builder.Build();
@@ -33,7 +43,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -42,9 +51,12 @@ app.UseAuthorization();
 //    pattern: "movies/released/{year}/{month}",
 //    defaults: new { controller = "Movies", action = "ByReleasedDate" },
 //    new {year = @"2021|2022", month = @"\d{2}"});
+
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.MapRazorPages();
 
