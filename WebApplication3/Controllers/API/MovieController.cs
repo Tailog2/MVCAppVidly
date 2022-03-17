@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebApplication3.Data;
-using WebApplication3.DataTransferObjects;
-using WebApplication3.Models;
+using Vidly.Data;
+using Vidly.DataTransferObjects;
+using Vidly.Models;
 
-namespace WebApplication3.Controllers.API
+namespace Vidly.Controllers.API
 {
     [Route("api/Movies")]
     [ApiController]

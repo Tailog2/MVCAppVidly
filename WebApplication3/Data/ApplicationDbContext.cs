@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WebApplication3.Models;
+using Vidly.Models;
 
-namespace WebApplication3.Data
+namespace Vidly.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

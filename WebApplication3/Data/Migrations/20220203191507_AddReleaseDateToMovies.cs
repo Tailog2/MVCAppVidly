@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace WebApplication3.Data.Migrations
+namespace Vidly.Data.Migrations
 {
     public partial class AddReleaseDateToMovies : Migration
     {

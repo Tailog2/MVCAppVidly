@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication3.Models
+namespace Vidly.Models
 {
     public class MembershipType
     {

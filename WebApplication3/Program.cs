@@ -2,8 +2,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
-using WebApplication3;
-using WebApplication3.Data;
+using Vidly;
+using Vidly.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +21,6 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddControllersWithViews();
-
 
 
 

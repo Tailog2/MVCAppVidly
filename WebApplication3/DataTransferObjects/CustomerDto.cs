@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WebApplication3.Models.Business_Rules;
+using Vidly.Models.Business_Rules;
 
-namespace WebApplication3.DataTransferObjects
+namespace Vidly.DataTransferObjects
 {
     public class CustomerDto
     {

@@ -1,4 +1,4 @@
-namespace WebApplication3.Models
+namespace Vidly.Models
 {
     public class ErrorViewModel
     {

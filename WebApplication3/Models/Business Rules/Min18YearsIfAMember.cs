@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication3.Models.Business_Rules
+namespace Vidly.Models.Business_Rules
 {
     public class Min18YearsIfAMember : ValidationAttribute
     {

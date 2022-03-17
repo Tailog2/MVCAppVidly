@@ -1,5 +1,6 @@
-﻿
-@model WebApplication3.ViewModels.CustomersViewModel
+﻿@model Vidly.ViewModels.CustomersViewModel
+@using RequestsHelper
+@using System.Net
 
 @{
     ViewData["Title"] = "Customers";
@@ -17,7 +18,7 @@ else if (Model.Customers?.Any() is null)
 }
 else
 {
-    <table class="table table-bordered table-hover" style="font-size: 20px">
+    <table id="customers" class="table table-bordered table-hover" style="font-size: 20px">
         <thead>
             <tr>
                 <td>Customer</td>
@@ -26,12 +27,17 @@ else
         </thead>
         <tbody>
             @foreach (var customer in Model.Customers)
-            {
+            {            
                 <tr>
                     <td>@Html.ActionLink(@customer.Name,	"Edit",	"Customers",	new { id=customer.Id })</td>
                     <td>@customer.MembershipType.Name</td>
+                    <td>
+                        <button data-customer-id="@customer.Id" class="btn btn-link js-delete">Delete</button>
+                    </td> 
                 </tr>
             }
         </tbody>
     </table>
 }
+
+

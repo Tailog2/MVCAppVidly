@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication3.DataTransferObjects
+namespace Vidly.DataTransferObjects
 {
     public class GenreDto
     {

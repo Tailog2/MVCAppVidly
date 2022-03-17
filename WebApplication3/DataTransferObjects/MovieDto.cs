@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApplication3.DataTransferObjects
+namespace Vidly.DataTransferObjects
 {
     public class MovieDto
     {

@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication3.Data;
+using Vidly.Data;
 
 #nullable disable
 
-namespace WebApplication3.Data.Migrations
+namespace Vidly.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20220201193553_AddColumnIsSubscribedToNewsletterInCustomerTable")]

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WebApplication3.Models;
+using Vidly.Models;
 
-namespace WebApplication3.ViewModels
+namespace Vidly.ViewModels
 {
     public class MovieFormViewModel
     {

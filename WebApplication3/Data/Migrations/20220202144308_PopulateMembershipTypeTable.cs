@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using WebApplication3.Models;
+using Vidly.Models;
 
 #nullable disable
 
-namespace WebApplication3.Data.Migrations
+namespace Vidly.Data.Migrations
 {
     public partial class PopulateMembershipTypeTable : Migration
     {

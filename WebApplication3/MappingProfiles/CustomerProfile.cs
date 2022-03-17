@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using WebApplication3.DataTransferObjects;
-using WebApplication3.Models;
+using Vidly.DataTransferObjects;
+using Vidly.Models;
 
-namespace WebApplication3
+namespace Vidly
 {
     public class CustomerProfile : Profile
     {

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Controller;
-using WebApplication3.Data;
-using WebApplication3.Models;
-using WebApplication3.ViewModels;
+using Vidly.Data;
+using Vidly.Models;
+using Vidly.ViewModels;
 
-namespace WebApplication3.Controllers
+namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {

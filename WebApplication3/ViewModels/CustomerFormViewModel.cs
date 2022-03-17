@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WebApplication3.Models;
-using WebApplication3.Models.Business_Rules;
+using Vidly.Models;
+using Vidly.Models.Business_Rules;
 
-namespace WebApplication3.ViewModels
+namespace Vidly.ViewModels
 {
     public class CustomerFormViewModel
     {

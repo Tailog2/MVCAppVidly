@@ -51,4 +51,8 @@
     <Folder Include="wwwroot\lib\jquery\dist\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\apiRequestHelper\RequestHelper.csproj" />
+  </ItemGroup>
+
 </Project>

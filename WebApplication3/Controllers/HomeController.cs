@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using WebApplication3.Models;
+using Vidly.Models;
 
-namespace WebApplication3.Controllers
+namespace Vidly.Controllers
 {
     public class HomeController : Controller
     {
