@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,10 +23,18 @@ namespace WebApplication3.Controllers.API
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MovieDto>>> GetMovies()
+        public async Task<ActionResult<IEnumerable<MovieDto>>> GetMovies(string? query = null)
         {
-            var movieInDb = await _dbContext.Movies.Include(m => m.Genre).ToListAsync();
-            var movieDto = movieInDb.Select(_mapper.Map<Movie, MovieDto>).ToList();
+            var movieInDb = await _dbContext.Movies
+                .Include(m => m.Genre)
+                .ToListAsync();
+
+            if (!string.IsNullOrWhiteSpace(query))
+                movieInDb = movieInDb.Where(m => m.Name.Contains(query) && m.NumberAvailable > 0).ToList();
+
+            var movieDto = movieInDb
+                .Select(_mapper.Map<Movie, MovieDto>)
+                .ToList();
 
             return movieDto;
         }
@@ -34,7 +43,7 @@ namespace WebApplication3.Controllers.API
         public async Task<ActionResult<MovieDto>> GetMovie(int id)
         {
             var movie = await _dbContext.Movies.Include(c => c.Genre).SingleOrDefaultAsync(m => m.Id == id);
-
+                
             if (movie is null)
                 return NotFound();
 
@@ -42,6 +51,7 @@ namespace WebApplication3.Controllers.API
         }
 
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public async Task<ActionResult<MovieDto>> CreateMovie(MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -57,6 +67,7 @@ namespace WebApplication3.Controllers.API
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public async Task<IActionResult> UpdateMovie(int id, MovieDto movieDto)
         {
             if (id != movieDto.Id)
@@ -87,6 +98,7 @@ namespace WebApplication3.Controllers.API
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public async Task<IActionResult> DeleteMovie(int id)
         {
             var movieInDb = await _dbContext.Movies.FindAsync(id);

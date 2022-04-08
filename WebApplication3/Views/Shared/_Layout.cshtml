@@ -1,29 +1,51 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApplication3</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-lumen.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebApplication3.styles.css" asp-append-version="true" />
-</head>
-<body>
-    @Html.Partial("_NavBar")
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <head>   
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - WebApplication3</title>
+        
+        <environment include="Development">
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-lumen.css"/>
+            <link rel="stylesheet" href="~/css/site.css"/>
+            <link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.css"/>
+            <link rel="stylesheet" href="~/WebApplication3.styles.css"/>
+            <link rel="stylesheet" href="~/css/typeahead.css"/>
+            <link rel="stylesheet" href="~/toastr.js/toastr.css"/>
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-changed.css"/>
+        </environment>
+
+        <environment exclude="Development">
+            <link rel="stylesheet" href="~/WebApplication3.styles.css"/>
+            <link rel="stylesheet" href="~/css/site.min.css"/>
+        </environment>
+    </head>
+    <body id="bootstrap-overrides">
+        @Html.Partial("_NavBar")
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - WebApplication3 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="~/lib/bootbox.js/bootbox.js"></script>
+        <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+        <script src="~/lib/typeahead.js/typeahead.bundle.js"></script>
+        <script src="~/toastr.js/toastr.min.js"></script>
+    </environment>
+
+    <environment exclude="Development">
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+    </body>
 </html>

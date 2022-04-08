@@ -1,37 +1,73 @@
-﻿
-@model WebApplication3.ViewModels.CustomersViewModel
+﻿@model WebApplication3.ViewModels.CustomersViewModel
 
 @{
     ViewData["Title"] = "Customers";
 }
-
 <h1>Customers</h1>
+<p>
+    @Html.ActionLink("New Customer",	"New",	"Customers", null, new {@class = "btn btn-primary"})
+</p>
+<table id="customers" class="table table-bordered table-hover" style="font-size: 20px">
+    <thead>
+        <tr>
+            <td>Customer</td>
+            <td>Discount Rate</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
+    <tbody>
+            
+    </tbody>
+</table>
 
-@if (Model is null)
+@section scripts
 {
-    <text>Application can not reach the database</text>
-}
-else if (Model.Customers?.Any() is null)
-{
-    <text>We don't have any customers yet</text>
-}
-else
-{
-    <table class="table table-bordered table-hover" style="font-size: 20px">
-        <thead>
-            <tr>
-                <td>Customer</td>
-                <td>Discount Rate</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var customer in Model.Customers)
-            {
-                <tr>
-                    <td>@Html.ActionLink(@customer.Name,	"Edit",	"Customers",	new { id=customer.Id })</td>
-                    <td>@customer.MembershipType.Name</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <script>
+        $(document).ready(function () {
+            var table = $("#customers").DataTable({
+                ajax: {
+                    url: "api/customers",
+                    dataType: "json",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, customer){
+                            return "<a href='/Customers/Edit/" + customer.id + "'>" + customer.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "membershipType.name"
+                    },
+                    {
+                        data: "id",
+                        render: function (data){
+                            return "<button class='btn btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#customers").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                window.bootbox.confirm({
+                    title: "Confirm Delete",
+                    message: "Are you sure you want to delete this customer?",
+                    callback: function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: "/api/customers/" + button.attr("data-customer-id"),
+                                method: "DELETE",
+                                success: function () {
+                                    table.row(button.parents("td").parents("tr")).remove().draw();
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+        });     
+    </script>
 }

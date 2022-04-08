@@ -19,7 +19,12 @@ namespace WebApplication3.DataTransferObjects
         public DateTime DateAdded { get; set; }
 
         [Range(1, 20)]
+        [Display(Name = "Numbers Movies In Stock")]
         public int NumberInStock { get; set; }
+
+        [Range(1, 20)]
+        [Display(Name = "Numbers Movies Available")]
+        public int NumberAvailable { get; set; }
 
         public int GenreId { get; set; }
 

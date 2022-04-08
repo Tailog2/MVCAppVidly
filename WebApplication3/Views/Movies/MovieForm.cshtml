@@ -15,22 +15,22 @@ else
         <div asp-validation-summary="All" class="text-danger"></div>
         <form>
             <div style="font-size: 20px">
-                <div class="mt-3">
+                <div class="form-group">
                     @Html.LabelFor(m => m.Name, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name"})
                     @Html.ValidationMessageFor(m => m.Name)
                 </div>
-                <div class="mt-3">
+                <div class="form-group">
                     @Html.LabelFor(m => m.ReleaseDate, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control", placeholder = "Release Date"})
                     @Html.ValidationMessageFor(m => m.ReleaseDate)
                 </div>
-                <div class="mt-3">
+                <div class="form-group">
                     @Html.LabelFor(m => m.NumberInStock, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.NumberInStock, new { @class = "form-control", placeholder = "Number in Stock"})
                     @Html.ValidationMessageFor(m => m.NumberInStock)
                 </div>
-                <div class="mt-3">
+                <div class="form-group">
                     @Html.LabelFor(m => m.GenreId, new { @class = "form-label" })
                     @Html.DropDownListFor(m => m.GenreId, new SelectList(Model.Genres, "Id", "Name"), "Select Movie Genre",new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.GenreId)

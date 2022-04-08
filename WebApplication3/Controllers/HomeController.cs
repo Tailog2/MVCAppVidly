@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApplication3.Models;
 
 namespace WebApplication3.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -13,6 +15,7 @@ namespace WebApplication3.Controllers
             _logger = logger;
         }
 
+        [ResponseCache(VaryByHeader = "User-Agent", Duration = 50)]
         public IActionResult Index()
         {
             return View();
@@ -20,13 +23,8 @@ namespace WebApplication3.Controllers
 
         public IActionResult Privacy()
         {
+            throw new Exception("Don't worry. This is just a test error");
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

@@ -5,24 +5,35 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication3", "WebApplication3\WebApplication3.csproj", "{79A9CE55-29E2-4702-B5A8-2226723CDC94}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Vidly.React", "Vidly.React\Vidly.React.esproj", "{F91861F9-7283-4645-84F1-D201F56434C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSenderLibrary", "EmailSender\EmailSenderLibrary.csproj", "{E9D7359F-B7D9-4AF9-B417-A9EFAEB11E1D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSenderLibraryTest", "EmailSenderLibraryTest\EmailSenderLibraryTest.csproj", "{5EC0F4DC-2B5E-4E68-8E56-F7DA545C6A04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Testing|Any CPU = Testing|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{79A9CE55-29E2-4702-B5A8-2226723CDC94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{79A9CE55-29E2-4702-B5A8-2226723CDC94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79A9CE55-29E2-4702-B5A8-2226723CDC94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79A9CE55-29E2-4702-B5A8-2226723CDC94}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F91861F9-7283-4645-84F1-D201F56434C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F91861F9-7283-4645-84F1-D201F56434C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F91861F9-7283-4645-84F1-D201F56434C4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{F91861F9-7283-4645-84F1-D201F56434C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F91861F9-7283-4645-84F1-D201F56434C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F91861F9-7283-4645-84F1-D201F56434C4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{79A9CE55-29E2-4702-B5A8-2226723CDC94}.Testing|Any CPU.ActiveCfg = Testing|Any CPU
+		{79A9CE55-29E2-4702-B5A8-2226723CDC94}.Testing|Any CPU.Build.0 = Testing|Any CPU
+		{E9D7359F-B7D9-4AF9-B417-A9EFAEB11E1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9D7359F-B7D9-4AF9-B417-A9EFAEB11E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9D7359F-B7D9-4AF9-B417-A9EFAEB11E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9D7359F-B7D9-4AF9-B417-A9EFAEB11E1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9D7359F-B7D9-4AF9-B417-A9EFAEB11E1D}.Testing|Any CPU.ActiveCfg = Testing|Any CPU
+		{E9D7359F-B7D9-4AF9-B417-A9EFAEB11E1D}.Testing|Any CPU.Build.0 = Testing|Any CPU
+		{5EC0F4DC-2B5E-4E68-8E56-F7DA545C6A04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EC0F4DC-2B5E-4E68-8E56-F7DA545C6A04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EC0F4DC-2B5E-4E68-8E56-F7DA545C6A04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EC0F4DC-2B5E-4E68-8E56-F7DA545C6A04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EC0F4DC-2B5E-4E68-8E56-F7DA545C6A04}.Testing|Any CPU.ActiveCfg = Testing|Any CPU
+		{5EC0F4DC-2B5E-4E68-8E56-F7DA545C6A04}.Testing|Any CPU.Build.0 = Testing|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

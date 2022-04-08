@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Controller;
 using WebApplication3.Data;
 using WebApplication3.Models;
@@ -16,6 +19,7 @@ namespace WebApplication3.Controllers
             _dbContext = dbContext;
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public IActionResult? Details(int id)
         {
 
@@ -29,14 +33,17 @@ namespace WebApplication3.Controllers
 
         }
 
+        
         public IActionResult Index()
         {
-            var movies = _dbContext.Movies.Include(m => m.Genre).ToList();
-
-            var viewModel = new MoviesViewModel() { Movies = movies };
-            return View(viewModel);
+            if (User.IsInRole(RoleName.CanManageMovies))
+            {
+                return View("List");
+            }
+            return View("ReadOnlyList");
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public IActionResult Random()
         {
             var movie = new Movie() {Name = "Shrek!"};
@@ -61,6 +68,7 @@ namespace WebApplication3.Controllers
             return Ok($"{year} | {month}");
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult Save(Movie movie)
@@ -98,6 +106,7 @@ namespace WebApplication3.Controllers
             return RedirectToAction("Index", "Movies");
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public IActionResult Edit(int id)
         {
             var movie = _dbContext.Movies.Include(m => m.Genre).SingleOrDefault(c => c.Id == id);
@@ -113,6 +122,7 @@ namespace WebApplication3.Controllers
             return View("MovieForm", viewModel);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public IActionResult New()
         {
             var genres = _dbContext.Genres.ToList();

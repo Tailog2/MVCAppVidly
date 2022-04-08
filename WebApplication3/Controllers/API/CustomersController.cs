@@ -25,10 +25,18 @@ namespace WebApplication3.Controllers.API
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CustomerDto>>>  GetCustomers()
+        public async Task<ActionResult<IEnumerable<CustomerDto>>>  GetCustomers(string? query = null)
         {
-            var customersInDb = await _dbContext.Customers.Include(c => c.MembershipType).ToListAsync();
-            var customerDto = customersInDb.Select(_mapper.Map<Customer, CustomerDto>).ToList();
+            var customersInDb = await _dbContext.Customers
+                .Include(c => c.MembershipType)
+                .ToListAsync();
+
+            if (!string.IsNullOrWhiteSpace(query))
+                customersInDb = customersInDb.Where(c => c.Name.Contains(query)).ToList();
+
+            var customerDto = customersInDb
+                .Select(_mapper.Map<Customer, CustomerDto>)
+                .ToList();
 
             return customerDto;
         }

@@ -2942,12 +2942,13 @@ textarea.form-control-lg {
   z-index: 3;
 }
 
-.field-validation-error {
-  display: none;
-  width: 100%;
-  margin-top: 0.25rem;
-  font-size: 0.875em;
-  color: #ff4136;
+.field-validation-error
+ {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #ff4136;
 }
 
 .invalid-tooltip {
@@ -5484,7 +5485,6 @@ fieldset:disabled .btn {
   -ms-flex-direction: column;
   flex-direction: column;
   padding-left: 0;
-  margin-bottom: 0;
   border-radius: 0.25rem;
 }
 
@@ -11732,4 +11732,12 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 .modal .btn-close,
 .toast .btn-close {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>");
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.time {
+    color: #e60a31;
 }

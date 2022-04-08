@@ -1,2 +1,11 @@
-﻿<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+﻿<environment include="Development">
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</environment>
+
+<environment exclude="Development">
+    <script src="~/scripts/jquery.validation.min.js" asp-append-version="true"></script>
+</environment>
+
+
+

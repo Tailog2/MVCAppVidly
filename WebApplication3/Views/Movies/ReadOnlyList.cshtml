@@ -1,0 +1,42 @@
+﻿@model WebApplication3.ViewModels.MoviesViewModel
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<h1>Movies</h1>
+
+<table id="movies" class="table	table-bordered	table-hover"  style="font-size: 20px">
+    <thead>
+    <tr>
+        <td>Movie</td>
+        <td>Genre</td>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#movies").DataTable({
+                ajax: {
+                    url: "api/movies",
+                    dataType: "json",
+                    dataSrc: "",
+                },
+                columns: [
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "genre.name"
+                    }
+                ]
+            });
+        });     
+    </script>
+}

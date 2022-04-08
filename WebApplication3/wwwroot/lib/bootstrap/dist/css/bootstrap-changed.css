@@ -1,0 +1,23 @@
+﻿#bootstrap-overrides .body {
+    color: #52656B !important;
+}
+
+
+#bootstrap-overrides .navbar {
+    background-color: #FF3B77 !important;
+    border-color: #FF8598 !important;
+    color: #fff !important;
+    font-size: 18px;
+}
+
+#bootstrap-overrides .time {
+    color: gray !important;
+}
+
+#bootstrap-overrides .nav-link {
+    color: #fff !important;
+}
+
+#bootstrap-overrides .navbar-brand {
+    color: #fff !important;
+}

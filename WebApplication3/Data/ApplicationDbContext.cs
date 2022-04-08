@@ -4,7 +4,7 @@ using WebApplication3.Models;
 
 namespace WebApplication3.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -15,5 +15,6 @@ namespace WebApplication3.Data
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<MembershipType> MembershipTypes { get; set; }
+        public DbSet<Rental> Rentals { get; set; }
     }
 }

@@ -1,22 +1,35 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 .field-validation-error {
-    font-size: 16px
+    font-size: 16px;
+}
+
+label.error {
+    font-size: 16px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #ff4136;
+}
+
+input.error {
+    border-color: #ff4136;
 }

@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Web.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Controller;
 using WebApplication3.Data;
 using WebApplication3.Models;
 using WebApplication3.ViewModels;
+using Controller = Microsoft.AspNetCore.Mvc.Controller;
 
 namespace WebApplication3.Controllers
 {
@@ -20,13 +23,10 @@ namespace WebApplication3.Controllers
         {
             _dbContext.Dispose();
         }
-
+     
         public IActionResult? Index()
         {
-            var customers = _dbContext.Customers.Include(c => c.MembershipType).ToList();
-
-            var viewModel = new CustomersViewModel() { Customers = customers };
-            return View(viewModel);
+            return View();
         }
         public IActionResult? Details(int id)
         {
@@ -41,8 +41,8 @@ namespace WebApplication3.Controllers
 
         }
 
-        [ValidateAntiForgeryToken]
-        [HttpPost]
+        [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryToken]
+        [Microsoft.AspNetCore.Mvc.HttpPost]
         public IActionResult? Save(Customer customer)
         {
             if (ModelState.IsValid is false)

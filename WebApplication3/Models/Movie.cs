@@ -30,7 +30,9 @@ namespace WebApplication3.Models
         [Display(Name = "Number in Stock")]
         public int NumberInStock { get; set; }
 
-        
+        [Range(1, 20)]
+        public int NumberAvailable { get; set; }
+
         [Required(ErrorMessage = "Please select movie's genre")]
         [Display(Name = "Genre")]
         public int GenreId { get; set; }
