@@ -1,4 +1,5 @@
 # This ASP.NET web app, for a movies store
+# Made by Lev Samsonov
 # The app use API interfaces for on the backend and jquery on the frontend
 It allows users to: <br/>
 1. Create and store the store customeres in MS SQL database
